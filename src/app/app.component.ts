@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ClientelaravelService } from './service/clientelaravel.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'frontend';
+
+  constructor (public servc:ClientelaravelService)
+  {
+    this.servc.getWards().subscribe(r=>{
+      console.warn(r);
+      console.table(r[0]);
+    })
+  }
 }
